@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Vyhledat pojištěnce{% endblock %}
+
+{% block content %}
+<h1>Vyhledat pojištěnce</h1>
+<form method="GET" action="{% url 'search_insured_person' %}">
+    <div><input type="text" name="q" placeholder="Zadejte jméno nebo příjmení" value="{{ query|default_if_none:'' }}"></div>
+    <div><button type="submit" class="btn">Vyhledat</button></div>
+</form>
+
+{% if query %}
+    <ul>
+        {% for insured_person in insured_people %}
+        <li class="list-item">
+            <a href="{% url 'insured_person_detail' insured_person.pk %}">
+                {{ insured_person.first_name }} {{ insured_person.last_name }} - {{ insured_person.age }} let
+            </a>
+        </li>
+        {% empty %}
+        <li>Nebyli nalezeni žádní pojištěnci.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<a href="{% url 'insured_people_list' %}" class="back-link">Zpět na seznam</a>
+{% endblock %}

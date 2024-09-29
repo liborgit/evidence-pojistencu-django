@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Stránka nenalezena{% endblock %}
+
+{% block content %}
+  <h1>404 - Stránka nebyla nalezena</h1>
+  <div class="not-found-info">
+    <p>Omlouváme se, ale stránka, kterou hledáte, neexistuje.</p>
+  </div>
+
+  <a href="{% url 'home_page' %}" class="back-link">Zpět na hlavní stránku</a>
+
+{% endblock %}

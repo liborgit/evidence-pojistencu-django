@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Upravit pojištěnce{% endblock %}
+
+{% block content %}
+<h1>Upravit pojištěnce {{ insured_person.first_name }} {{ insured_person.last_name }}</h1>
+
+{% include 'messages.html' %}
+
+<form method="post" id="edit-insured-person-form">
+    {% csrf_token %}
+    <div>
+        <label for="{{ form.first_name.id_for_label }}">Jméno:</label>
+        <input type="text" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.name }}" value="{{ form.first_name.value|default_if_none:'' }}" autocomplete="given-name">
+    </div>
+    <div>
+        <label for="{{ form.last_name.id_for_label }}">Příjmení:</label>
+        <input type="text" id="{{ form.last_name.id_for_label }}" name="{{ form.last_name.name }}" value="{{ form.last_name.value|default_if_none:'' }}" autocomplete="family-name">
+    </div>
+    <div>
+        <label for="{{ form.age.id_for_label }}">Věk:</label>
+        <input type="number" id="{{ form.age.id_for_label }}" name="{{ form.age.name }}" value="{{ form.age.value|default_if_none:'' }}" autocomplete="off">
+    </div>
+    <div>
+        <label for="{{ form.phone.id_for_label }}">Telefon:</label>
+        <input type="tel" id="{{ form.phone.id_for_label }}" name="{{ form.phone.name }}" value="{{ form.phone.value|default_if_none:'' }}" autocomplete="tel">
+    </div>
+    <div>
+        <label for="{{ form.email.id_for_label }}">E-mail:</label>
+        <input type="email" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" value="{{ form.email.value|default_if_none:'' }}" autocomplete="email">
+    </div>
+    <div><button type="submit" class="btn">Uložit změny</button></div>
+</form>
+<a href="{% url 'insured_person_detail' insured_person.pk %}" class="back-link">Zpět na detail</a>
+{% endblock %}

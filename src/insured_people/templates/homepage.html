@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Domů | Evidence pojištěnců{% endblock %}
+
+{% block content %}
+<h1>Vítejte v systému správy pojištěnců</h1>
+
+<div class="card-container">
+    <div class="card">
+        <a href="{% url 'add_insured_person' %}" class="flex-btn">
+            <span>Přidat pojištěnce</span>
+            <img src="{% static 'img/add.png' %}" alt="Přidat pojištěnce">
+        </a>
+    </div>
+    <div class="card">
+        <a href="{% url 'insured_people_list' %}" class="flex-btn">
+            <span>Zobrazit seznam</span>
+            <img src="{% static 'img/list.png' %}" alt="Zobrazit všechny pojištěnce">
+        </a>
+    </div>
+    <div class="card">
+        <a href="{% url 'search_insured_person' %}" class="flex-btn">
+            <span>Vyhledat data</span>
+            <img src="{% static 'img/search.png' %}" alt="Vyhledat pojištěnce">
+        </a>
+    </div>
+</div>
+
+<div class="project-info">
+    <div>
+        <h2>O systému</h2>
+        <p>
+            Systém správy pojištěnců umožňuje snadno a efektivně spravovat informace o pojištěncích.
+            Zjednodušuje správu dat, přidávání nových pojištěnců a vyhledávání konkrétních osob na základě různých parametrů.
+            Je navržen tak, aby zjednodušil rutinní operace a zvýšil efektivitu správy.
+        </p>
+        <p>
+            Systém je postaven na programovacím jazyce Python a využívá framework Django.
+            Veškerá data jsou uložena v SQL databázi, což zajišťuje rychlé dotazy a spolehlivé ukládání informací.
+        </p>
+        <p>
+            Tento systém je vhodný pro menší firmy a agentury, které spravují větší množství pojištěnců a hledají nástroj pro zjednodušení a automatizaci správy dat.
+        </p>
+    </div>
+
+    <div>
+        <h2>Jak používat systém</h2>
+        <p>
+            Pro přidání nového pojištěnce klikněte na tlačítko „Přidat pojištěnce“. Pro zobrazení seznamu všech pojištěnců klikněte na „Zobrazit seznam“.
+            Pokud hledáte konkrétního pojištěnce, využijte funkci „Vyhledat data“. Všechny tyto funkce jsou k dispozici v horním menu i v rychlém přístupu výše.
+        </p>
+    </div>
+
+    <div>
+        <h2>Možnosti do budoucna</h2>
+        <p>
+            Z hlediska uživatelské zkušenosti by bylo možné přidat uživatelské role a oprávnění, což by zajistilo lepší kontrolu přístupu k informacím a umožnilo spravovat pojištěnce na různých úrovních v organizaci.
+        </p>
+        <p>
+            V budoucnu by bylo také možné implementovat analytické nástroje a přehledy, které by poskytovaly hlubší vhled do dat pojištěnců, například statistiky o počtu nově přidaných pojištěnců, analýzy věkových skupin nebo sledování trendů v oblasti pojištění.
+        </p>
+    </div>
+</div>
+
+{% endblock %}

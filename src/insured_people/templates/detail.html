@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Detail pojištěnce{% endblock %}
+
+{% block content %}
+<h1>Detail pojištěnce</h1>
+
+{% include 'messages.html' %}
+
+<div class="detail-info">
+    <p><strong>Jméno:</strong> {{ insured_person.first_name }}</p>
+    <p><strong>Příjmení:</strong> {{ insured_person.last_name }}</p>
+    <p><strong>Věk:</strong> {{ insured_person.age }} let</p>
+    <p><strong>Telefon:</strong> {{ insured_person.phone }}</p>
+    <p><strong>E-mail:</strong> {{ insured_person.email }}</p>
+</div>
+
+<div class="action-links">
+    <a href="{% url 'edit_insured_person' insured_person.pk %}">Upravit</a>
+    <a href="#" onclick="event.preventDefault(); if(confirm('Opravdu chcete smazat tohoto pojištěnce?')) { document.getElementById('delete-form').submit(); }">Smazat</a>
+    <a href="{% url 'insured_people_list' %}">Zpět na seznam</a>
+</div>
+
+<!-- Hidden form for deletion -->
+<form id="delete-form" method="POST" action="{% url 'delete_insured_person' insured_person.pk %}" style="display: none;">
+    {% csrf_token %}
+</form>
+{% endblock %}

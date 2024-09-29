@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Seznam pojištěnců{% endblock %}
+
+{% block content %}
+<h1>Seznam pojištěnců</h1>
+<ul>
+    {% for insured_person in insured_people %}
+    <li class="list-item">
+        <a href="{% url 'insured_person_detail' insured_person.pk %}">
+            {{ insured_person.first_name }} {{ insured_person.last_name }} - {{ insured_person.age }} let
+        </a>
+    </li>
+    {% empty %}
+    <li>Nebyli nalezeni žádní pojištěnci.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_insured_person' %}" class="back-link">Přidat nového pojištěnce</a>
+{% endblock %}

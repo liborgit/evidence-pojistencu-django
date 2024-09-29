@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Open Graph meta tags for sharing -->
+    <meta property="og:title" content="Webová aplikace pro správu pojištěnců">
+    <meta property="og:description" content="Jednoduchá aplikace pro přidávání, úpravu a správu pojištěnců.">
+    <meta property="og:image" content="{% static 'img/preview.png' %}">
+    <meta property="og:url" content="https://liboroliva.pythonanywhere.com/">
+    <meta property="og:type" content="website">
+</head>
+<body>
+    <!-- Desktop navigation menu (only visible on larger screens) -->
+    <header class="desktop-header">
+        <nav class="desktop-nav">
+            <ul class="menu">
+                <li class="{% if request.resolver_match.url_name == 'home_page' %}active{% endif %}">
+                    <a href="{% url 'home_page' %}" class="menu-item">Domů</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'search_insured_person' %}active{% endif %}">
+                    <a href="{% url 'search_insured_person' %}" class="menu-item">Vyhledat pojištěného</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'add_insured_person' %}active{% endif %}">
+                    <a href="{% url 'add_insured_person' %}" class="menu-item">Přidat pojištěného</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'insured_people_list' %}active{% endif %}">
+                    <a href="{% url 'insured_people_list' %}" class="menu-item">Seznam pojištěnců</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Mobile navigation menu (hamburger) -->
+    <header class="mobile-header">
+        <div class="menu-toggle">
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+        </div>
+        <ul class="menu mobile-menu">
+            <li class="{% if request.resolver_match.url_name == 'home_page' %}active{% endif %}">
+                <a href="{% url 'home_page' %}" class="menu-item">Domů</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'search_insured_person' %}active{% endif %}">
+                <a href="{% url 'search_insured_person' %}" class="menu-item">Vyhledat pojištěného</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'add_insured_person' %}active{% endif %}">
+                <a href="{% url 'add_insured_person' %}" class="menu-item">Přidat pojištěného</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'insured_people_list' %}active{% endif %}">
+                <a href="{% url 'insured_people_list' %}" class="menu-item">Seznam pojištěnců</a>
+            </li>
+        </ul>
+    </header>
+
+    <article>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-container">
+            <p>Webová aplikace pro správu pojištěnců</p>
+            <p>Python-based řešení | <a href="https://github.com/liborgit/evidence-pojistencu-django" target="_blank">GitHub</a></p>
+            <p>© Libor Oliva 2024</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/menu.js' %}"></script>
+</body>
+</html>
