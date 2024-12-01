@@ -1,4 +1,3 @@
-
 # Insured People Management - Django
 
 This project is a full-stack web application designed for managing insured people using the Django framework. It allows users to easily and efficiently add, edit, search, and view information about insured individuals.
