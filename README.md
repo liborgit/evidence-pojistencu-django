@@ -21,12 +21,12 @@ The project is deployed online and can be accessed at: [https://liboroliva.pytho
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/liborgit/evidence-pojistencu-django.git
+   git clone https://github.com/liborgit/insured-people-management.git
    ```
 
 2. Navigate to the project directory:
     ```bash
-    cd evidence-pojistencu-django/src
+    cd insured-people-management/src
     ```
 
 3. Install the dependencies from `requirements.txt`:
